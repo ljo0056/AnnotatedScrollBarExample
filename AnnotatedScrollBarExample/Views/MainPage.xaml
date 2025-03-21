@@ -1,0 +1,48 @@
+﻿<Page
+    x:Class="AnnotatedScrollBarExample.Views.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:helpers="using:AnnotatedScrollBarExample.Helpers"
+    xmlns:res="using:AnnotatedScrollBarExample.Resources"
+    Loaded="Page_Loaded"
+    mc:Ignorable="d">
+
+    <Page.Resources>
+        <helpers:TypeDataTemplateSelector x:Key="TypeDataTemplateSelector"/>
+    </Page.Resources>
+
+    <Grid BorderBrush="Blue" BorderThickness="1">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="auto"/>
+        </Grid.ColumnDefinitions>
+
+        <ScrollView x:Name="scrollView"
+                    Grid.Column="0"
+                    VerticalScrollBarVisibility="Hidden">
+            <ItemsRepeater x:Name="itemsRepeater"
+                           ItemsSource="{x:Bind ViewModel.Methods, Mode=OneWay}" 
+                           SizeChanged="ItemsRepeater_SizeChanged">
+                <ItemsRepeater.Layout>
+                    <StackLayout/>
+                </ItemsRepeater.Layout>
+                <ItemsRepeater.ItemTemplate>
+                    <DataTemplate x:DataType="res:GCMethod">
+                        <Border BorderThickness="1" BorderBrush="LightGray">
+                            <Grid>
+                                <ContentControl ContentTemplateSelector="{StaticResource TypeDataTemplateSelector}" Content="{x:Bind}"/>
+                            </Grid>
+                        </Border>
+                    </DataTemplate>
+                </ItemsRepeater.ItemTemplate>
+            </ItemsRepeater>
+        </ScrollView>
+
+        <AnnotatedScrollBar x:Name="annotatedScrollBar" Grid.Column="1"
+                            Margin="5,0" Height="{x:Bind scrollView.Height, Mode=OneWay}"
+                            HorizontalAlignment="Right"
+                            DetailLabelRequested="AnnotatedScrollBar_DetailLabelRequested"/>
+    </Grid>
+</Page>

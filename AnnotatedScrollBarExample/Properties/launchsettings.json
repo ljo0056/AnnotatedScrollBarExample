@@ -1,0 +1,10 @@
+﻿{
+    "profiles": {
+      "AnnotatedScrollBarExample (Package)": {
+        "commandName": "MsixPackage"
+      },
+      "AnnotatedScrollBarExample (Unpackaged)": {
+        "commandName": "Project"
+      }
+    }
+}

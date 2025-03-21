@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ResourceDictionary
+    x:Class="AnnotatedScrollBarExample.Resources.ValveMethodRes"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:AnnotatedScrollBarExample.Resources">
+
+    <DataTemplate x:Key="ValveMethod" x:DataType="local:ValveMethod">
+        <Grid BorderBrush="Black" BorderThickness="0" RowSpacing="10" SizeChanged="OnSizeChanged">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="400"/>
+            </Grid.RowDefinitions>
+            
+            <TextBlock Grid.Row="0" Text="{Binding Title, Mode=OneWay}"/>
+            <TextBlock Grid.Row="1" Text="{Binding Temp, Mode=OneWay}"/>
+            <TextBlock Grid.Row="2" Text="{Binding Height, Mode=OneWay}"/>
+        </Grid>
+    </DataTemplate>
+</ResourceDictionary>
